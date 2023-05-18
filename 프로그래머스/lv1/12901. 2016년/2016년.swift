@@ -1,13 +1,9 @@
 func solution(_ a:Int, _ b:Int) -> String {
-    var days: [Int] = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-    var week: [String] = ["THU", "FRI", "SAT", "SUN", "MON", "TUE", "WED"]
+    let days: [Int] = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    let week: [String] = ["THU", "FRI", "SAT", "SUN", "MON", "TUE", "WED"]
     
-    var sum = 0
-    for i in 0..<(a-1) {
-        sum += days[i]
-    }
-    sum += b
+    let totalDay = days[0..<a-1].reduce(0, +) + b
     
     
-    return week[sum%7]
+    return week[totalDay%7]
 }
