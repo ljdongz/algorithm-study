@@ -1,5 +1,4 @@
 import Foundation
-
 func solution(_ babbling:[String]) -> Int {
     
     var result = 0
@@ -7,12 +6,11 @@ func solution(_ babbling:[String]) -> Int {
     
     for bab in babbling {
         var b = bab
-        for word in words {
-            b = b.replacingOccurrences(of: word, with: " ")
-        }
-        b = b.replacingOccurrences(of: " ", with: "")
-        if b.isEmpty && !bab.contains("ayaaya") && !bab.contains("yeye") && !bab.contains("woowoo") && !bab.contains("mama") { result += 1 }
+        b = b.replacingOccurrences(of: "aya", with: "1")
+        b = b.replacingOccurrences(of: "ye", with: "2")
+        b = b.replacingOccurrences(of: "woo", with: "3")
+        b = b.replacingOccurrences(of: "ma", with: "4")
+        if Int(b) != nil && !b.contains("11") && !b.contains("22") && !b.contains("33") && !b.contains("44") { result += 1 }
     }
-    
     return result
 }
