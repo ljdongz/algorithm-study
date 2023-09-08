@@ -19,7 +19,10 @@ def validParentheses(value) -> bool:
 
     if string[out] != result:
       return False
-    
-  return True
+  
+  if len(outStack):
+    return False
+  else:
+    return True
 
-print(validParentheses("{()[}"))
+print(validParentheses("("))
