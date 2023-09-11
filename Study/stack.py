@@ -1,6 +1,6 @@
 string = {"(": ")", "{": "}", "[": "]"}
 
-
+# Case 1.
 def validParentheses(value) -> bool:
   inStack = list(value)
   outStack = []
@@ -25,7 +25,7 @@ def validParentheses(value) -> bool:
   else:
     return True
   
-  
+# Case 2. 
 def isValid(s):
   stack = []
   for p in s:
@@ -35,13 +35,9 @@ def isValid(s):
       stack.append("}")
     elif p == "[":
       stack.append("]")
-    else:
-      if not stack or stack.pop() != p:
+    elif not stack or stack.pop() != p:
         return False
   
   return not stack
 
 print(isValid("()"))
-
-lst = [""]
-print(not lst)
