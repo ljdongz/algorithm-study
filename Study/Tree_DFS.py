@@ -1,12 +1,12 @@
 
-# DFS 기본 개념
+# DFS(깊이 우선 탐색) 기본 개념
 def dfs(cur_node):
   if cur_node is None:
     return
   dfs(cur_node.left)
   dfs(cur_node.right)
 
-# 전위 순회
+# 전위 순회 (Left Node 방문 전 나 자신 리턴)
 def preorder(cur_node):
   if cur_node is None:
     return
@@ -15,7 +15,7 @@ def preorder(cur_node):
   preorder(cur_node.left)
   preorder(cur_node.right)
 
-# 중위 순회
+# 중위 순회 (Left Node 방문 후 시 나 자신 리턴)
 def inorder(cur_node):
   if cur_node is None:
     return
@@ -24,7 +24,7 @@ def inorder(cur_node):
   print(cur_node.value)
   inorder(cur_node.right)
 
-# 후위 순회
+# 후위 순회 (Left, Right Node 방문 후 나 자신 리턴))
 def postorder(cur_node):
   if cur_node is None:
     return
