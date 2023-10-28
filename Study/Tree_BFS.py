@@ -1,12 +1,12 @@
 from collections import deque
 
-# DFS(너비 우선 탐색) 기본 개념
+# BFS(너비 우선 탐색) 기본 개념. (Level Order)
 def bfs(root):
 
   if root is None:
     return []
   
-  visited = [] # 방문 한 노드 리스트
+  visited = [] # 방문 한 노드 리스트 (구현 필수 X -> 문제에 따라 적절한 타입 정의 및 구현하기)
   
   q = deque() # 방문 예정인 노드 리스트
   q.append(root)

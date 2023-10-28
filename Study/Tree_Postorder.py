@@ -1,6 +1,4 @@
 
-# 후위 순위 문제 (LCA)
-## p, q의 가장 낮은 공통 조상의 노드를 반환
 
 class Node:
   def __init__(self, value, left = None, right = None) -> None:
@@ -8,6 +6,9 @@ class Node:
     self.right = right
     self.value = value
 
+
+# 후위 순위 문제 (LCA)
+## p, q의 가장 낮은 공통 조상의 노드를 반환
 def LCA(root, p, q):
   if root == None:
     return None
@@ -21,6 +22,18 @@ def LCA(root, p, q):
     return root
   return left or right # left, right 둘 다 None이면 None, 아니면 값이 있는 노드 반환
 
+# Maximum Depth of Binary Tree
+## Tree의 Level을 구하는 문제
+def maxDepth(root):
+  if root is None:
+    return 0
+  
+  left = mdb(root.left)
+  right = mdb(root.right)
+
+  return max(left, right) + 1
+
+
 root = Node(3)
 root.left = Node(5)
 root.right = Node(1)
@@ -33,3 +46,5 @@ root.right.right = Node(8)
 
 node = LCA(root, 6, 4)
 print(node.value)
+
+print(maxDepth(root))
