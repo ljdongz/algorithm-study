@@ -9,9 +9,9 @@ def keysAndRooms_BFS(rooms):
   while queue:
     cur_room = queue.popleft()
     visited[cur_room] = True
-    for key in rooms[cur_room]: # 현재 방에 있는 key 순차 접근
-      if not visited[key]:
-        queue.append(key)
+    for next_room in rooms[cur_room]: # 현재 방에 있는 key 순차 접근
+      if not visited[next_room]:
+        queue.append(next_room)
 
   if visited.__contains__(False): return False
   else: return True
@@ -32,6 +32,6 @@ def keysAndRooms_DFS(rooms):
   if visited.__contains__(False): return False
   else: return True
 
-rooms = [[1,3],[3,0,2],[0], [0]]
+rooms = [[1,3],[3,0,2],[0], [0], [1]]
 
 print(keysAndRooms_DFS(rooms))
