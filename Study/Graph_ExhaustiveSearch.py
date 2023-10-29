@@ -7,6 +7,12 @@ def numIslandBFS(grid):
   col = len(grid[0])
   visited = [[False]*col for _ in range(row)] # 방문 한 노드들 위치를 표시하기 위한 리스트 선언
 
+  """
+  함수 내 bfs를 구현한 이유
+  1. visited를 전역변수처럼 활용하기 위해
+  2. 문제가 island를 구하는 문제
+      -> 특정 노드에서 bfs를 통해 주변 노드들을 모두 방문하면서 island를 찾음
+  """
   def bfs(x, y):
     # dx, dy를 이용하여 상하좌우 이동 
     # (ex. dx[0] + dy[0] == '좌'로 한 칸 이동)
