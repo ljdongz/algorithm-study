@@ -40,6 +40,8 @@ def numIslandBFS(grid):
   return number_of_island
 
 
+# 암시적 그래프 (2차원 배열로 표현)
+
 grid = [
   ['1', '1', '1', '1', '0'],
   ['1', '1', '0', '1', '0'],
