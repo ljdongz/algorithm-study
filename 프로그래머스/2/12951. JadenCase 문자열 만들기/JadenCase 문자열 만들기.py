@@ -1,16 +1,12 @@
-
 def solution(s: str):
-  answer = ''
   strings = s.split(" ")
+  result = []
+  for c in strings:
 
-  for i in range(len(strings)):
-
-    if strings[i] == " ": 
-      answer += ""
+    if c == "": 
+      result.append("")
       continue
 
-    answer += strings[i].capitalize()
-    if i == len(strings) - 1: break
-    answer += " "
+    result.append(c.capitalize())
 
-  return answer
+  return " ".join(result)
