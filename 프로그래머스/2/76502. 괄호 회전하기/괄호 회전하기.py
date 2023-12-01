@@ -3,8 +3,6 @@ from collections import deque
 
 def solution(s):
     answer = 0
-    
-    if len(s) % 2 == 1: return answer
 
     queue = deque(list(s))
     stack = []
