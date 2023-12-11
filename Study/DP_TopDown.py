@@ -16,7 +16,10 @@ def fib(n):
     if n == 1 or n == 2:
         return 1
     
+    # n에 대한 값이 메모리에 저장되어 있지 않다면,
     if n not in result:
-        result[n] = fib(n-1) + fib(n-2) # 계산 결과를 메모리에 저장
+        # 계산 결과를 메모리에 저장
+        result[n] = fib(n-1) + fib(n-2) 
 
+    # n에 대한 값을 리턴
     return result[n]
