@@ -29,7 +29,7 @@ def shortestPathBinaryMatrix(grid):
       next_col = cur_col + dc
       if next_row >= 0 and next_row < row and next_col >= 0 and next_col < col:
         if grid[next_row][next_col] == 0 and not visited[next_row][next_col]:
-          visited[next_row][next_col] = False
+          visited[next_row][next_col] = True
           queue.append((next_row, next_col, cur_len + 1))
 
   return shortest_path_len
@@ -38,8 +38,8 @@ grid = [
   [0, 1, 1, 1, 0],
   [0, 0, 0, 1, 0],
   [1, 1, 0, 0, 0],
-  [0, 0, 0, 1, 0],
-  [0, 0, 0, 0, 0]
+  [0, 0, 0, 1, 1],
+  [0, 0, 0, 1, 0]
 ]
 
 print(shortestPathBinaryMatrix(grid))
