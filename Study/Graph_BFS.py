@@ -3,9 +3,9 @@ from collections import deque
 """
 Tree와는 달리 Graph에서는 Queue에서 pop한 노드를 visited에 추가하지 않음.
 즉, 다음에 방문할 노드를 visited에 미리 추가해놓음.
-그 이유로는, Tree에서는 특정 노드까지 갈 수 있는 경로가 하나뿐임. (수직적)
-하지만, Graph는 특정 노드까지 갈 수 있는 경로가 여러개가 될 수 있음. (수평적)
-즉, 다음에 방문할 노드를 visited에 미리 추가하지 않으면 다른 노드에서 해당 노드에 방문할 수 있어 중복 발생.
+그 이유로는, Tree는 탐색 방향이 한 방향. (Root를 시작으로 부모 노드에서 자식 노드로)
+하지만, Graph는 탐색 방향이 여러 방향임.
+즉, 다음에 방문할 노드를 visited에 미리 추가하면서 중복 방문을 예방.
 """
 
 def bfs(graph, start_v):
