@@ -5,6 +5,7 @@ class Node:
     self.left = left
     self.right = right
     self.value = value
+    
 
 # BFS(너비 우선 탐색) 기본 개념. (Level Order)
 def bfs(root):
@@ -28,6 +29,8 @@ def bfs(root):
 
   return visited
 
+
+
 # (Graph 탐색처럼) visited에 방문할 노드를 미리 추가한 방법
 def bfs2(root):
 
@@ -48,6 +51,8 @@ def bfs2(root):
     if cur_node.right:
       q.append(cur_node.right)
       visited.append(cur_node.right.value)
+
+  return visited
 
 
 root = Node(3)
