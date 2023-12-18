@@ -46,7 +46,7 @@ def mccs(cost: list):
 # Bottom Up
 
 def mccs_bottomUp(cost: list):
-
+    # len(cost) + 1의 위치한 계단까지의 최소 비용을 알고 싶음.
     memo = [-1] * (len(cost) + 1)
     memo[0] = 0
     memo[1] = 0
