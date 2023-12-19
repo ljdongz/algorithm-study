@@ -1,3 +1,5 @@
+# Bottom Up
+
 def solution(triangle: list):
 
     for i in range(len(triangle)-1, 0, -1):
