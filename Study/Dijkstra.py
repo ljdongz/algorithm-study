@@ -14,7 +14,7 @@ import heapq
 
 def dijkstra(graph, start, final):
     costs = {} # 노드에 대한 비용
-    pq = [] # 방문할 노드 정보 (현재 노드까지의 비용, 현재 노드, 현재 노드까지의 경로)
+    pq = [] # 방문할 노드 정보 (방문할 노드까지의 비용, 방문할 노드, 방문할 노드까지의 경로)
 
     heapq.heappush(pq, (0, start, [start])) # 1. 우선순위 큐에 시작 노드 추가
 
