@@ -34,7 +34,3 @@ def network_delay_time(times: list, n, k):
         return -1
 
 print(network_delay_time([[2,1,2], [2,3,5], [2,4,1], [4,3,3]], 4, 2))
-
-a = [(2,1), (1,2)]
-a.sort()
-print(a)
