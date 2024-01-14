@@ -1,5 +1,5 @@
 def solution(numbers):
-    answer = [0 for _ in range(len(numbers))]
+    answer = [-1 for _ in range(len(numbers))]
 
     stack = []
 
@@ -11,9 +11,5 @@ def solution(numbers):
             answer[idx] = num
 
         stack.append((index, num))
-    
-    while stack:
-        idx, _ = stack.pop()
-        answer[idx] = -1
 
     return answer
