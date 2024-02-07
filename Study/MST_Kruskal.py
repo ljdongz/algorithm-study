@@ -24,23 +24,23 @@ def mst_kruskal():
     result = 0
     
     # 2. Union-Find 알고리즘 구현 및 부모(루트) 노드 정보 초기화
-    parents = [0] + [i for i in range(1, len(graph)+1)] # (노드 번호에 맞춰서) 부모 노드 초기화
+    parent = [0] + [i for i in range(1, len(graph)+1)] # (노드 번호에 맞춰서) 부모 노드 초기화
 
     # 노드 X의 루트 노드를 찾음
-    def find(x):
-        if parents[x] == x: 
-            return x
-        return find(parents[x])
+    def find_parent(x):
+        if parent[x] != x:
+            parent[x] = find_parent(parent[x])
+        return parent[x]
 
     # 연결된 두 노드의 루트 노드를 일치시킴
     def union(x, y):
-        rootX = find(x)
-        rootY = find(y)
-        parents[rootY] = rootX # 순서 상관 X
+        rootX = find_parent(x)
+        rootY = find_parent(y)
+        parent[rootY] = rootX # 순서 상관 X
 
 
     for cost, (xNode, yNode) in edges: # 3. 순차적으로 간선에 접근
-        if parents[xNode] != parents[yNode]: # 4. 사이클을 형성하지 않는 간선인 경우
+        if parent[xNode] != parent[yNode]: # 4. 사이클을 형성하지 않는 간선인 경우
             # 5. 비용 업데이트 및 부모 노드 정보 업데이트 (Union-Find 알고리즘 사용)
             result += cost  
             union(xNode, yNode)
