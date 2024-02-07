@@ -24,7 +24,7 @@ def mst_kruskal():
     result = 0
     
     # 2. Union-Find 알고리즘 구현 및 부모(루트) 노드 정보 초기화
-    parent = [0] + [i for i in range(1, len(graph)+1)] # (노드 번호에 맞춰서) 부모 노드 초기화
+    parent = [i for i in range(len(graph)+1)] # (노드 번호에 맞춰서) 부모 노드 초기화
 
     # 노드 X의 루트 노드를 찾음
     def find_parent(x):
