@@ -40,7 +40,7 @@ def mst_kruskal():
 
 
     for cost, (xNode, yNode) in edges: # 3. 순차적으로 간선에 접근
-        if parent[xNode] != parent[yNode]: # 4. 사이클을 형성하지 않는 간선인 경우
+        if find_parent(xNode) != find_parent(yNode): # 4. 사이클을 형성하지 않는 간선인 경우
             # 5. 비용 업데이트 및 부모 노드 정보 업데이트 (Union-Find 알고리즘 사용)
             result += cost  
             union(xNode, yNode)
