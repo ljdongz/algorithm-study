@@ -7,18 +7,18 @@
     재귀를 이용하여 모든 경우의 수를 방문하는 것
 """
 
-# 조합
+# 조합 (nPr)
 def permute(nums, k):
     def backtrack(curr):
         if len(curr) == k:
             ans.append(curr[:]) # 복사
             return
         
-        for num in nums:
-            if num not in curr:
+        for i in range(len(nums)):
+            if nums[i] not in curr:
 
                 # 중요 포인트
-                curr.append(num)
+                curr.append(nums[i])
                 backtrack(curr)
                 curr.pop()
 
@@ -30,7 +30,7 @@ print(permute([1,2,3], 3)) # [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1,
 
 
 
-# 순열
+# 순열 (nCr)
 def combination(nums, k):
     result = []
 
