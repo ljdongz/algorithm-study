@@ -8,9 +8,9 @@
 """
 
 # 조합
-def permute(nums):
+def permute(nums, k):
     def backtrack(curr):
-        if len(curr) == len(nums):
+        if len(curr) == k:
             ans.append(curr[:]) # 복사
             return
         
@@ -26,7 +26,7 @@ def permute(nums):
     backtrack([])
     return ans
 
-print(permute([1,2,3])) # [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
+print(permute([1,2,3], 3)) # [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
 
 
 
