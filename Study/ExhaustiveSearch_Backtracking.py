@@ -48,7 +48,7 @@ def combination(nums, k):
     return result
 
 
-print(combination([1,2,3,4], 2))
+print(combination([1,2,3,4], 2)) # [[1, 2], [1, 3], [1, 4], [2, 3], [2, 4], [3, 4]]
 
 
 
@@ -72,7 +72,7 @@ def subset(nums):
 
     return result
 
-print(subset([1,2,3,4]))
+print(subset([1,2,3,4])) # [[], [1], [2], [3], [4], [1, 2], [1, 3], [1, 4], [2, 3], [2, 4], [3, 4], [1, 2, 3], [1, 2, 4], [1, 3, 4], [2, 3, 4], [1, 2, 3, 4]]
 
 
 
@@ -95,4 +95,4 @@ def twoSum(nums, k, target):
     
     return backtrack(0, [])
 
-print(twoSum([4,9,7,5,1], 3, 15))
+print(twoSum([4,9,7,5,1], 3, 15)) # [9, 5, 1]
