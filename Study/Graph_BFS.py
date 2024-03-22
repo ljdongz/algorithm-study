@@ -16,7 +16,7 @@ def bfs(graph, start_v):
     cur_v = queue.popleft()
     for v in graph[cur_v]: # 현재 노드에 연결된 모든 노드들
       if v not in visited: # 이미 방문한 노드인지 확인
-        visited.append(v)
+        visited.append(v) # 방문할 노드를 미리 추가 (중복 방문 방지)
         queue.append(v)
     
   return visited
