@@ -1,41 +1,60 @@
-from collections import deque, defaultdict
+import sys
+from collections import deque
 
-vertexes, edges, startV = list(map(int, input().split()))
+input = sys.stdin.readline
 
-graph = defaultdict(list)
+N, M, V = list(map(int, input().split()))
 
-for _ in range(edges):
-    start, end = list(map(int, input().split()))
-    graph[start].append(end)
-    graph[end].append(start)
+graph = [[False] * (N+1) for _ in range(N+1)]
 
-for key in graph.keys():
-    graph[key].sort()
+for _ in range(M):
+    r, c = list(map(int, input().split()))
+    graph[r][c] = True
+    graph[c][r] = True
 
-visitedBfs = []
-visitedDfs = []
+
+def dfs():
+    visited = [False] * (N+1)
+    result = []
+
+    def recursive(cur_node):
+
+        visited[cur_node] = True
+        result.append(cur_node)
+        
+        for next_node, isConnected in enumerate(graph[cur_node]):
+            if isConnected and not visited[next_node]:
+                recursive(next_node)
+
+
+    recursive(V)
+    
+    for r in result:
+        print(r, end=" ")
+
 
 def bfs():
-    visitedBfs = [startV]
+    result = [V]
+    visited = [False] * (N+1)
+    visited[V] = True
+
     q = deque()
-    q.append(startV)
+    q.append(V)
 
     while q:
-        cur_v = q.popleft()
-        print(cur_v, end=" ")
-        for next_v in graph[cur_v]:
-            if next_v not in visitedBfs:
-                visitedBfs.append(next_v)
-                q.append(next_v)
+        cur_node = q.popleft()
+
+        for next_node, isConnected in enumerate(graph[cur_node]):
+            if isConnected and not visited[next_node]:
+                result.append(next_node)
+                q.append(next_node)
+                visited[next_node] = True
+    
+    for r in result:
+        print(r, end=" ")
 
 
-def dfs(vertex):
-    visitedDfs.append(vertex)
-    print(vertex, end=" ")
-    for next_v in graph[vertex]:
-        if next_v not in visitedDfs:
-            dfs(next_v)
 
-dfs(startV)
+dfs()
 print()
 bfs()
