@@ -3,12 +3,12 @@ def solution(routes):
 
     routes.sort()
 
-    cur = ()
+    cur = (routes[0][0], routes[0][1])
 
-    for start, end in routes:
-        if not cur:
-            cur = (start, end)
-            continue
+    for idx in range(1, len(routes)):
+        
+        start = routes[idx][0]
+        end = routes[idx][1]
 
         if start > cur[1]:
             answer += 1
