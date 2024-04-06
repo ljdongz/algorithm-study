@@ -14,11 +14,11 @@ rooms = [0] * K
 result = 0
 
 for meeting in meetings:
-    rooms.sort(reverse=True)
     for idx in range(len(rooms)):
         if rooms[idx] < meeting[0]:
             rooms[idx] = meeting[1]
             result += 1
+            rooms.sort(reverse=True)
             break
 
 print(result)
