@@ -29,3 +29,4 @@ elif start != 0:
     print(result)
 else:
     print(0)
+    
