@@ -1,59 +1,85 @@
+
 class Node:
-  def __init__(self, value, next = None, prev = None):
+  def __init__(self, value, next = None):
     self.value = value
     self.next = next
-    self.prev = prev
+    
 
+class LinkedList:
+  def __init__(self):
+    self.head = None
+    self.tail = None
 
-class BrowserHistory:
-  def __init__(self, value):
+  def append(self, value):
     node = Node(value)
-    self.head = node
-    self.tail = node
 
-    print("None")
+    if self.head is None:
+      self.head = node
+      self.tail = node
+    else:
+      self.tail.next = node
+      self.tail = node
 
-  def visit(self, value):
-    node = Node(value)
-    self.tail.next = node
-    node.prev = self.tail
-    self.tail = self.tail.next
-
-    print("None")
-
-  def back(self, value):
-    node = self.tail
+  def removeLast(self):
+    if self.head is None:
+      return
     
-    for _ in range(value):
-      if node.prev is None:
-        break
-      node = node.prev
+    if self.head.next is None:
+      self.head = None
+      self.tail = None
+      return
     
-    self.tail = node
+    cur = self.head
+    while cur.next.next is not None:
+      cur = cur.next
 
-    print(self.tail.value)
+    cur.next = None
+    self.tail = cur
 
-  def forward(self, value):
-    node = self.tail
+  def remove(self, index):
+    if self.head is None:
+      return
     
-    for _ in range(value):
-      if node.next is None:
-        break
-      node = node.next
+    if index == 0:
+      self.head = self.head.next
+      if self.head is None:
+        self.tail = None
+      return
+
+    cur = self.head
+    for _ in range(index-1):
+      if cur.next.next is None:
+        return
+      cur = cur.next
+  
+    tmp = cur.next
+    cur.next = cur.next.next
     
-    self.tail = node
+    if self.tail == tmp:
+      self.tail = cur
 
-    print(self.tail.value)
+  def print(self):
+    if self.head is None:
+      print("first and last is None")
+      return
+    
+    print("first:", self.head.value)
+    print("last:", self.tail.value)
+
+    cur = self.head
+    while cur is not None:
+      print(cur.value)
+      cur = cur.next
 
 
-browserHistory = BrowserHistory("leetcode.com")
-browserHistory.visit("google.com")
-browserHistory.visit("facebook.com")
-browserHistory.visit("youtube.com")
-browserHistory.back(1)
-browserHistory.back(1)
-browserHistory.forward(1)
-browserHistory.visit("linkedin.com")
-browserHistory.forward(2)
-browserHistory.back(2)
-browserHistory.back(7)
+linkedList = LinkedList()
+
+linkedList.append(1)
+linkedList.append(2)
+linkedList.append(3)
+linkedList.remove(1)
+linkedList.remove(2)
+linkedList.print()
+linkedList.remove(0)
+
+linkedList.print()
