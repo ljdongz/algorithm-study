@@ -1,5 +1,10 @@
 """
-MST: 그래프상에 존재하는 모든 노드들을 최소비용으로 연결
+MST: 그래프상에 존재하는 모든 노드들을 최소비용으로 연결 
+(최소비용으로 연결하기 위해 결과적으로 간선의 개수는 노드의 개수-1이 됨)
+
+<< Kruskal 알고리즘 >>
+가중치가 낮은 간선부터 순차적으로 추가
+만약 사이클이 걸리는 간선일 경우는 패스
 
 << Kruskal 알고리즘 구현 방법 >>
 1. 그래프 간선들을 배열에 추가하여 비용의 오름차순으로 정렬
@@ -39,7 +44,7 @@ def mst_kruskal():
         parent[rootY] = rootX # 순서 상관 X
 
 
-    for cost, (xNode, yNode) in edges: # 3. 순차적으로 간선에 접근
+    for cost, (xNode, yNode) in edges: # 3. 비용이 낮은 간선부터 순차적으로 순회
         if find_parent(xNode) != find_parent(yNode): # 4. 사이클을 형성하지 않는 간선인 경우
             # 5. 비용 업데이트 및 부모 노드 정보 업데이트 (Union-Find 알고리즘 사용)
             result += cost  
