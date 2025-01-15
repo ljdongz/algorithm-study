@@ -1,31 +1,33 @@
+import sys
+import heapq
 from collections import defaultdict
-import sys, heapq
 
 input = sys.stdin.readline
 
-N, M = list(map(int,input().split()))
+V, E = list(map(int, input().split()))
 
+visited = [False] * (V + 1)
 graph = defaultdict(list)
-visited = [False] * N
+
+for _ in range(E):
+  v1, v2, w = list(map(int, input().split()))
+  graph[v1].append((v2, w))
+  graph[v2].append((v1, w))
+
+hq = []
+heapq.heappush(hq, (0, 1))
+
 result = 0
-pq = []
 
-for _ in range(M):
-    start, end, cost = list(map(int, input().split()))
-    graph[start].append((cost, end))
-    graph[end].append((cost, start))
+while hq:
+  cur_weight, cur_node = heapq.heappop(hq)
 
-heapq.heappush(pq, (0, 1))
+  if not visited[cur_node]:
+    result += cur_weight
+    visited[cur_node] = True
 
-while pq:
-    
-    cur_cost, cur_com = heapq.heappop(pq)
-    if not visited[cur_com - 1]:
-        result += cur_cost
-        visited[cur_com - 1] = True
-        
-
-        for next_cost, next_com in graph[cur_com]:
-            heapq.heappush(pq, (next_cost, next_com))
+    for (next_node, next_weight) in graph[cur_node]:
+      if not visited[next_node]:
+        heapq.heappush(hq, (next_weight, next_node))
 
 print(result)
