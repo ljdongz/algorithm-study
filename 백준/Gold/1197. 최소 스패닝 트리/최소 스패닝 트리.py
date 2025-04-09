@@ -1,31 +1,33 @@
-from collections import defaultdict
-import sys, heapq
-
+import sys
+sys.setrecursionlimit(10000000)
 input = sys.stdin.readline
 
-N, M = list(map(int,input().split()))
+V, E = list(map(int, input().split()))
 
-graph = defaultdict(list)
-visited = [False] * N
+parents = [i for i in range(V+1)]
+graph = []
 result = 0
-pq = []
 
-for _ in range(M):
-    start, end, cost = list(map(int, input().split()))
-    graph[start].append((cost, end))
-    graph[end].append((cost, start))
+for _ in range(E):
+  v1, v2, w = list(map(int, input().split()))
+  graph.append((w, (v1, v2)))
+graph.sort()
 
-heapq.heappush(pq, (0, 1))
+def find_parent(x):
+  if parents[x] != x:
+    parents[x] = find_parent(parents[x])
+  return parents[x]
 
-while pq:
-    
-    cur_cost, cur_com = heapq.heappop(pq)
-    if not visited[cur_com - 1]:
-        result += cur_cost
-        visited[cur_com - 1] = True
-        
+def union(x, y):
+  xNode = find_parent(x)
+  yNode = find_parent(y)
+  parents[xNode] = yNode
 
-        for next_cost, next_com in graph[cur_com]:
-            heapq.heappush(pq, (next_cost, next_com))
+for weight, (v1, v2) in graph:
+  rootX = find_parent(v1)
+  rootY = find_parent(v2)
+  if rootX != rootY:
+    result += weight
+    union(v1, v2)
 
 print(result)
