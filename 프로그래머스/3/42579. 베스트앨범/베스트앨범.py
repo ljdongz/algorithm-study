@@ -1,24 +1,27 @@
+
 def solution(genres: list, plays: list):
-    answer = []
-
-    totalPlaydict = {}
-    playDict = {}
-
+    result = []
+    playlist = []
+    
+    dict = {}
+    
     for i in range(len(genres)):
-        if genres[i] in totalPlaydict:
-            totalPlaydict[genres[i]] += plays[i]
-            playDict[genres[i]].append((i, plays[i]))
+        genre = genres[i]
+        play = plays[i]
+        if genre in dict:
+            dict[genre][0] += play
+            dict[genre][1].append((play, i))
         else:
-            totalPlaydict[genres[i]] = plays[i]
-            playDict[genres[i]] = [(i, plays[i])]
-
-    totalPlaydict = sorted(totalPlaydict.items(), key=lambda item: item[1], reverse=True)
-
-    for key, _ in totalPlaydict:
-        lst = playDict[key]
-        lst.sort(key=lambda x: x[1], reverse=True)
-        for i in range(min(2, len(lst))):
-            answer.append(lst[i][0])
+            dict[genre] = [play, [(play, i)]]
+            
+    for value in dict.values():
+        value[1] = sorted(value[1], key=lambda x: (-x[0], x[1]))
+        playlist.append(value)
+    playlist.sort(reverse = True)
     
+    for _, list in playlist:
+        for i in range(min(len(list), 2)):
+            result.append(list[i][1])
+        
     
-    return answer
+    return result
