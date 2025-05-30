@@ -1,13 +1,14 @@
 def solution(clothes):
     result = 1
     dict = {}
-    for i in clothes:
-        if i[1] in dict:
-            dict[i[1]] += 1
-        else:
-            dict[i[1]] = 0
     
-    for val in dict.values():
-        result += (val + 1) * result
-
+    for cloth in clothes:
+        if cloth[1] in dict:
+            dict[cloth[1]] += 1
+        else:
+            dict[cloth[1]] = 1
+    
+    for value in dict.values():
+        result *= (value + 1)
+        
     return result - 1
