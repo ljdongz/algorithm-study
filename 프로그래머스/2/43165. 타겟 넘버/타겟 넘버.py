@@ -1,28 +1,17 @@
-
-
 def solution(numbers: list, target):
-    answer = 0
-
-    def dfs(current, op, index):
-        
-        if op == "+":
-            current += numbers[index]
-        elif op =="-":
-            current -= numbers[index]
-
-        if index == len(numbers) - 1:
-            if current == target:
+    index = 0
+    
+    def dfs(index, current):
+        if index == len(numbers):
+            if current == 0:
                 return 1
             else:
                 return 0
-
-        left = dfs(current, "-", index + 1)
-        right = dfs(current, "+", index + 1)
-
-        return left + right
-
-    left = dfs(0, "-", 0)
-    right = dfs(0, "+", 0)
-
-
-    return left + right
+        
+        num = numbers[index]
+        index += 1
+        
+        return dfs(index, (current-num)) + dfs(index, (current+num))
+        
+    
+    return dfs(index, target)
