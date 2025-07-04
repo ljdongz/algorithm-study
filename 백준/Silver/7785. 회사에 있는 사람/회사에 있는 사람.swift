@@ -14,10 +14,4 @@ for i in 0..<N {
   }
 }
 
-let sortedArray = log.sorted { 
-  $0.key > $1.key
-}
-
-for arr in sortedArray {
-  print(arr.0)
-}
+log.sorted { $0.key > $1.key }.forEach { print($0.0) }
