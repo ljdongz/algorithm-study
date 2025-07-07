@@ -12,8 +12,8 @@ let sTime = S[0] * 100 + S[1]
 let eTime = E[0] * 100 + E[1]
 let qTime = Q[0] * 100 + Q[1]
 
-var log = Set<String>()
-var check = Set<String>()
+var enter = Set<String>()
+var leave = Set<String>()
 var count = 0
 
 while let line = readLine() {
@@ -22,16 +22,15 @@ while let line = readLine() {
   let user = String(chatLog[1])
 
   if (time[0] * 100 + time[1]) <= sTime {
-    log.insert(user)
+    enter.insert(user)
     continue
   }
 
   if eTime <= (time[0] * 100 + time[1]) && (time[0] * 100 + time[1]) <= qTime {
-    if log.contains(user) && !check.contains(user) {
-       count += 1 
-       check.insert(user)
+    if enter.contains(user) {
+       leave.insert(user)
     }
   }
 }
 
-print(count)
+print(leave.count)
