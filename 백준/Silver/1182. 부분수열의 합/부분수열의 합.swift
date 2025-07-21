@@ -11,23 +11,26 @@ let target = input[1]
 let numbers = readLine()!.split(separator: " ").map { Int(String($0))! }
 var result = 0
 
-// total: 뽑아야 하는 숫자 개수
-// cur: 현재까지 뽑은 숫자 개수
-// start: 시작점
-// sum: 현재까지 합
-func recursive(total: Int, cur: Int, start: Int, sum: Int) {
-  if cur == total {
+func recursive(k: Int, sum: Int, used: Int) {
+  if k == n {
+    if used == 0 { return }
     if sum == target { result += 1 }
-    return
+    return 
   }
 
-  for i in start..<n {
-    recursive(total: total, cur: cur + 1, start: i + 1, sum: sum + numbers[i])
-  }
+  recursive(k: k + 1, sum: sum + numbers[k], used: used + 1) // 지금 바라보는 박스를 선택하는 경우
+  recursive(k: k + 1, sum: sum, used: used) // 지금 바라보는 박스를 선택하지 않는 경우
 }
 
-for i in 1...n {
-  recursive(total: i, cur: 0, start: 0, sum: 0)
-}
+/*
+순서
+O O O O
+O O O X
+O O X O
+O O X X
+...
+*/
+
+recursive(k: 0, sum: 0, used: 0)
 
 print(result)
