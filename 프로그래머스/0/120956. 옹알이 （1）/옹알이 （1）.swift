@@ -1,46 +1,38 @@
 import Foundation
 
-/*
-
-
-
-*/
-
 func solution(_ babbling:[String]) -> Int {
-    let words = ["aya", "ye", "woo", "ma"]
-    var count = 0
-    
-    var combines: [String] = []
-    
-    for i in 1...4 {
-        
-        for x in 0..<words.count {
-            
-            for y in 0..<words.count {
-                if i == 1 || x == y { continue }
-                
-                for z in 0..<words.count {
-                    if i == 2 || x == z || y == z { continue }
-                    
-                    for w in 0..<words.count {
-                        if i == 3 || x == w || y == w || z == w { continue }
-                        
-                        combines.append(words[x] + words[y] + words[z] + words[w])
-                    }
-                    
-                    combines.append(words[x] + words[y] + words[z])
-                }
-                
-                combines.append(words[x] + words[y])
-            }
-            
-            combines.append(words[x])
-        }
+  let words = ["aya", "ye", "woo", "ma"]
+
+  var combines: [String] = []
+  var visited: [Bool] = [false, false, false, false]
+  var result = 0
+
+  // k: 현재 뽑은 개수
+  // m: 뽑아야 하는 총 개수
+  func recursive(k: Int, m: Int, word: String) {
+    if k == m {
+      combines.append(word)
+      return
     }
-    
-    for bab in babbling {
-        if combines.contains(bab) { count += 1 }
+
+    for i in 0..<4 {
+      if !visited[i] {
+        visited[i] = true
+        recursive(k: k + 1, m: m, word: word + words[i])
+        visited[i] = false
+      }
     }
-    
-    return count
+  }
+
+  for i in 1...4 {
+    recursive(k: 0, m: i, word: "")
+  }
+
+  for bab in babbling {
+    if combines.contains(bab) {
+      result += 1
+    }
+  }
+
+  return result
 }
