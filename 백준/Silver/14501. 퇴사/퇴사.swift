@@ -3,7 +3,6 @@ import Foundation
 let n = Int(readLine()!)!
 
 var meets: [[Int]] = [[]]
-var dp: [Int] = .init(repeating: 0, count: n + 2)
 var result = 0
 
 for _ in 0..<n {
