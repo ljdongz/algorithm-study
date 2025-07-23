@@ -3,33 +3,31 @@ import Foundation
 let input = readLine()!.split(separator: " ").map { Int(String($0))! }
 let n = input[0]
 let m = input[1]
-
 let nums = readLine()!.split(separator: " ").map { Int(String($0))! }.sorted()
-var called: Set<[Int]> = Set<[Int]>()
 var visited: [Bool] = .init(repeating: false, count: n)
-var curr: [Int] = []
+var result: [Int] = .init(repeating: 0, count: m)
+var answer = ""
 
-func recursive(count: Int) {
-  if count == m {
-    if !called.contains(curr) {
-      called.insert(curr)
-      for c in curr {
-        print(c, terminator: " ")
-      }
-      print()
-    }
+
+func recursive(k: Int) {
+  if k == m {
+    answer += result.map { String($0) }.joined(separator: " ") + "\n"
     return
   }
 
+  var used = 0
+
   for i in 0..<n {
     if !visited[i] {
+      if used == nums[i] { continue }
       visited[i] = true
-      curr.append(nums[i])
-      recursive(count: count + 1)
-      curr.removeLast()
+      result[k] = nums[i]
+      used = nums[i]
+      recursive(k: k + 1)
       visited[i] = false
     }
   }
 }
 
-recursive(count: 0)
+recursive(k: 0)
+print(answer)
