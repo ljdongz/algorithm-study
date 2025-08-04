@@ -6,6 +6,7 @@ var result = 0
 
 for _ in 0..<n {
   var stack: [String] = []
+  stack.reserveCapacity(100000)
 
   let input = readLine()!.map { String($0) }
 
