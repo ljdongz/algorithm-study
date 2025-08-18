@@ -32,7 +32,6 @@ for row in 0..<n {
     while queue.count >= front + 1 {
       let (curR, curC) = queue[front]
       front += 1
-      graph[curR][curC] = 1
       count += 1
 
       for (r, c) in drdc {
