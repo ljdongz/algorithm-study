@@ -6,10 +6,6 @@ let m = input[0]
 let n = input[1]
 let k = input[2]
 
-var graph: [[Int]] = Array(
-  repeating: Array(repeating: 0, count: n), 
-  count: m
-)
 var visited: [[Bool]] = Array(
   repeating: Array(repeating: false, count: n), 
   count: m
@@ -26,7 +22,7 @@ for _ in 0..<k {
 
   for dx in 0..<(endX - startX) {
     for dy in 0..<(endY - startY) {
-      graph[startY + dy][startX + dx] = 1
+      visited[startY + dy][startX + dx] = true
     }
   }
 }
@@ -36,7 +32,7 @@ var result: [Int] = []
 for row in 0..<m {
   for col in 0..<n {
 
-    if visited[row][col] || graph[row][col] != 0 { continue }
+    if visited[row][col] { continue }
     var queue: [(Int, Int)] = []
     var front = 0
     visited[row][col] = true
@@ -48,14 +44,13 @@ for row in 0..<m {
       let (curRow, curCol) = queue[front]
       front += 1
       count += 1
-      graph[curRow][curCol] = 2
 
       for (dr, dc) in drdc {
         let nextRow = curRow + dr
         let nextCol = curCol + dc
 
         if nextRow >= 0 && nextRow < m && nextCol >= 0 && nextCol < n {
-          if !visited[nextRow][nextCol] && graph[nextRow][nextCol] == 0 {
+          if !visited[nextRow][nextCol] {
             queue.append((nextRow, nextCol))
             visited[nextRow][nextCol] = true
           }
