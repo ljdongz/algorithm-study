@@ -9,9 +9,9 @@ for _ in 0..<Int(readLine()!)! {
   let N = input[1]
   let K = input[2]
 
-  var board: [[Int]] = .init(
+  var board: [[Bool]] = .init(
     repeating: .init(
-      repeating: 0,
+      repeating: false,
       count: M
     ),
     count: N
@@ -23,13 +23,13 @@ for _ in 0..<Int(readLine()!)! {
     let col = input[0]
     let row = input[1]
 
-    board[row][col] = 1
+    board[row][col] = true
   }
 
   for row in 0..<N {
     for col in 0..<M {
 
-      if board[row][col] != 1 { continue }
+      if !board[row][col] { continue }
       result += 1
       var queue: [(Int, Int)] = [(row, col)]
       var front = 0
@@ -43,10 +43,10 @@ for _ in 0..<Int(readLine()!)! {
           let nextC = curC + dc
 
           if nextR < 0 || nextR >= N || nextC < 0 || nextC >= M { continue }
-          if board[nextR][nextC] != 1 { continue }
+          if !board[nextR][nextC] { continue }
 
           queue.append((nextR, nextC))
-          board[nextR][nextC] = 0
+          board[nextR][nextC] = false
         }
       }
     }
