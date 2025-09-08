@@ -8,6 +8,10 @@ struct MinHeap<T: Comparable> {
     size > 0 ? elements[1] : nil
   }
 
+  var isEmpty: Bool {
+    size == 0
+  }
+
   /// 1) 완전이진트리 규칙을 만족하는 위치에 원소를 추가(append)
   /// 2) 최소힙의 조건을 만족할 때 까지 부모노드와 위치 변경 반복
   mutating func insert(with element: T) {
