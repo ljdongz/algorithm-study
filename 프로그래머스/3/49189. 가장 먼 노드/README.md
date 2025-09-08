@@ -1,10 +1,10 @@
 # [level 3] 가장 먼 노드 - 49189 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/49189?language=python3) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/49189?language=swift) 
 
 ### 성능 요약
 
-메모리: 21.8 MB, 시간: 65.23 ms
+메모리: 29.7 MB, 시간: 45.47 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2023년 12월 1일 11:8:3
+2025년 09월 08일 10:48:59
 
 ### 문제 설명
 
