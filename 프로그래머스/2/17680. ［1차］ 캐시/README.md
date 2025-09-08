@@ -1,10 +1,10 @@
 # [level 2] [1차] 캐시 - 17680 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/17680) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/17680?language=swift) 
 
 ### 성능 요약
 
-메모리: 10.2 MB, 시간: 1.31 ms
+메모리: 21.8 MB, 시간: 646.25 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 04월 24일 13:36:09
+2025년 09월 01일 10:58:17
 
 ### 문제 설명
 
