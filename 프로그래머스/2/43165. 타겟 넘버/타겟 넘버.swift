@@ -2,22 +2,16 @@ import Foundation
 
 func solution(_ numbers:[Int], _ target:Int) -> Int {
     
-    func recursive(cur: Int, index: Int) -> Int {
-        if index >= numbers.count {
-            return cur == target ? 1 : 0
+    func recursive(index: Int, sum: Int) -> Int {
+        if index == numbers.count {
+            return target == sum ? 1 : 0
         }
         
-        let plus = recursive(
-            cur: cur + numbers[index],
-            index: index + 1
-        )
-        let minus = recursive(
-            cur: cur - numbers[index],
-            index: index + 1
-        )
+        let left = recursive(index: index + 1, sum: sum + numbers[index])
+        let right = recursive(index: index + 1, sum: sum - numbers[index])
         
-        return plus + minus
+        return left + right
     }
     
-    return recursive(cur: 0, index: 0)
+    return recursive(index: 0, sum: 0)
 }
